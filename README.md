@@ -14,7 +14,8 @@ Clone this repository on your Docker host, cd into dockprom directory and run co
 git clone https://github.com/stefanprodan/dockprom
 cd dockprom
 
-ADMIN_USER=admin ADMIN_PASSWORD=admin docker-compose up -d
+ADMIN_USER=admin ADMIN_PASSWORD=admin DATA_SOURCE_NAME="user:password@(host:3306)/database" docker-compose up -d
+
 ```
 
 Prerequisites:
