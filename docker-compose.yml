@@ -115,7 +115,21 @@ services:
       - monitor-net
     labels:
       org.label-schema.group: "monitoring"
-
+      
+  mysqldexporter:
+    image: prom/mysqld-exporter
+    container_name: mysqld-exporter
+    restart: unless-stopped
+    ports:
+      - "9104:9104"
+    networks:
+      - monitor-net
+    labels:
+      org.label-schema.group: "monitoring"
+    environment:
+      - DATA_SOURCE_NAME=${DATA_SOURCE_NAME}
+      #DATA_SOURCE_NAME="user:password@(bdd:3306)/database"
+      
   caddy:
     image: stefanprodan/caddy
     container_name: caddy
